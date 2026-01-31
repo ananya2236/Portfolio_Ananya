@@ -1,71 +1,62 @@
-# Ananya Singh - Portfolio Website
+# Ananya Singh - Developer Portfolio
 
-A modern, animated portfolio website showcasing my work as a Full Stack Developer, AI/ML Developer, and DSA Solver.
+A premium, dark-themed developer portfolio built with **React**, **Tailwind CSS**, and **Framer Motion**. This project showcases skills, projects, and the professional journey of Ananya Singh, a Full-Stack Developer and AI/ML Enthusiast.
 
-## Features
+## 🚀 Project Overview
 
-- 🎨 **Modern Design**: Beautiful UI with gradient effects and smooth animations
-- ✨ **Framer Motion**: Smooth animations and transitions throughout
-- 📱 **Responsive**: Fully responsive design that works on all devices
-- 🎯 **Smooth Scrolling**: Animated scrolling between sections
-- 🌈 **Background Animations**: Dynamic animated background elements
-- 💫 **Interactive Elements**: Hover effects and interactive components
+*   **Theme:** Deep slate dark mode with Cyan/Blue accents.
+*   **Design Philosophy:** Minimalist, engineering-focused, and motion-rich.
+*   **Key Features:**
+    *   Dynamic rotating role text.
+    *   Infinite scrolling tech stack marquee.
+    *   Horizontal "journey" timeline.
+    *   Interactive project cards with conditional links.
+    *   Custom cursor with glow effects.
 
-## Technologies Used
+## 🛠 Tech Stack
 
-- **React** - UI library
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animations
-- **Vite** - Build tool
-- **React Icons** - Icon library
+*   **Frontend Framework:** React (Vite)
+*   **Styling:** Tailwind CSS
+*   **Animations:** Framer Motion
+*   **Icons:** Lucide React, React Icons
+*   **Fonts:** Space Grotesk (Headings), Inter (Body)
 
-## Sections
+## 📂 Project Structure
 
-1. **Hero** - Introduction with animated background
-2. **About** - Personal information and roles
-3. **Skills** - Technical skills with progress bars
-4. **Projects** - Featured projects showcase
-5. **Experience** - Work experience and education timeline
-6. **Contact** - Contact form and social links
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
-1. Install dependencies:
-```bash
-npm install
+```
+src/
+├── components/
+│   ├── Hero.jsx        # Landing section with rotating text
+│   ├── TechStack.jsx   # Infinite scroll skills marquee
+│   ├── About.jsx       # Bio, Skills, Education
+│   ├── Timeline.jsx    # Horizontal journey scroll
+│   ├── Projects.jsx    # Project grid with data logic
+│   ├── Contact.jsx     # Contact form & social links
+│   └── Navbar.jsx      # Sticky navigation
+├── App.jsx             # Main layout & Custom Cursor logic
+└── index.css           # Global styles & Tailwind imports
 ```
 
-2. Start the development server:
-```bash
-npm run dev
-```
+## ✨ Key Features & Logic
 
-3. Open your browser and navigate to `http://localhost:5173`
+### 1. Animations
+*   **Scroll Reveal:** All sections fade in (`opacity: 0` -> `1`) and slide up (`y: 20` -> `0`) using `framer-motion`'s `whileInView`.
+*   **Custom Cursor:** A glowing blue ring follows the mouse pointer (Desktop only).
+*   **Gradient Flow:** Headings feature a `animate-gradient-x` class that moves a background gradient from left to right.
 
-### Build for Production
+### 2. Component Logic
+*   **Hero:** Uses `setInterval` to rotate through roles: "Software Developer" -> "Full-Stack Developer", etc.
+*   **Projects:** Automatically hides "Live Demo" buttons if no link is provided in the data array.
+*   **Contact:**
+    *   **Email:** Redirects directly to Gmail compose view.
+    *   **Phone:** Copies number to clipboard and shows a temporary "Copied!" badge.
 
-```bash
-npm run build
-```
+### 3. Responsiveness
+*   Fully responsive grid layout.
+*   Mobile-optimized text sizes.
+*   Horizontal scrolling enabled for Timeline on smaller screens.
+*   Custom cursor disabled on touch devices to prevent UI lag.
 
-The built files will be in the `dist` directory.
 
-## Customization
 
-- Update personal information in component files
-- Modify colors in `tailwind.config.js`
-- Add/remove projects in `src/components/Projects.jsx`
-- Update skills in `src/components/Skills.jsx`
-- Customize animations in component files
-
-## License
-
-This project is open source and available under the MIT License.
-
+© 2026 Ananya Singh. Built with React.

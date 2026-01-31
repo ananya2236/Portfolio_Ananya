@@ -1,7 +1,25 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, FileText, Mail } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+const roles = [
+  "Software Developer",
+  "Full-Stack Developer",
+  "AI & ML Enthusiast",
+  "Problem Solver",
+  "DSA-Focused Engineer"
+];
 
 const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Elements */}
@@ -24,12 +42,23 @@ const Hero = () => {
           >
              <h2 className="text-cyan-400 font-medium tracking-wider mb-2">HELLO, I'M</h2>
              <h1 className="text-5xl md:text-7xl font-bold font-display text-slate-100 mb-4">
-               Ananya Singh
-             </h1>
-             <h3 className="text-2xl md:text-3xl text-slate-400 font-light">
-               Software Developer
-             </h3>
-          </motion.div>
+              Ananya Singh
+            </h1>
+            <div className="h-12 md:h-16 overflow-hidden relative">
+              <AnimatePresence mode="wait">
+                <motion.h3
+                  key={roleIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl md:text-3xl text-slate-400 font-light absolute top-0 left-0"
+                >
+                  {roles[roleIndex]}
+                </motion.h3>
+              </AnimatePresence>
+            </div>
+         </motion.div>
 
           <motion.p 
             initial={{ opacity: 0 }}
@@ -37,9 +66,13 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-slate-400 max-w-lg text-lg leading-relaxed"
           >
-            I build intelligent, scalable, and beautiful web applications. 
-            Passionate about AI, full-stack development, and creating impactful digital experiences.
+            This space reflects clarity of thought, precision in execution, and a constant pursuit of growth.
+            <br />
+            <span className="mt-2 inline-block text-sm font-semibold text-cyan-400 tracking-wide">
+              Worth a closer look!
+            </span>
           </motion.p>
+            
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -47,11 +80,20 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="flex flex-wrap gap-4 pt-4"
           >
-            <button className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 group">
-              <FileText size={20} />
-              <span>Resume</span>
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            <a
+  href="/resume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  download
+  className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-medium
+             hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300
+             transform hover:-translate-y-1 flex items-center gap-2 group"
+>
+  <FileText size={20} />
+  <span>Resume</span>
+  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+</a>
+
             <button 
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 className="px-8 py-3 bg-slate-800/50 border border-slate-700 rounded-full text-slate-300 font-medium hover:bg-slate-800 hover:text-white transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
@@ -62,12 +104,15 @@ const Hero = () => {
           </motion.div>
 
           {/* Decorative Line */}
-          <motion.div 
-             initial={{ width: 0 }}
-             animate={{ width: '100%' }}
-             transition={{ delay: 1, duration: 1 }}
-             className="h-1 bg-gradient-to-r from-cyan-500 to-transparent mt-12 max-w-xs rounded-full"
-          />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="mt-12 max-w-xs origin-center"
+          >
+            <div className="center-thick-line rounded-full" />
+          </motion.div>
+
         </motion.div>
 
         {/* Right Image */}
@@ -89,14 +134,14 @@ const Hero = () => {
                 className="absolute inset-0 border border-blue-500/20 rounded-full w-[450px] h-[450px] m-auto"
             />
 
-            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl z-10 bg-slate-800">
+            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 shadow-[0_0_40px_rgba(6,182,212,0.3)] z-10 bg-slate-800 group hover:scale-105 transition-transform duration-500">
                {/* Placeholder for user photo */}
                <img 
-                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" 
+                 src="/profile.png"
                  alt="Ananya Singh" 
-                 className="w-full h-full object-cover"
+                 className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent mix-blend-overlay" />
+               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent mix-blend-overlay group-hover:from-slate-900/40 transition-all duration-500" />
             </div>
             
             {/* Floating Elements */}

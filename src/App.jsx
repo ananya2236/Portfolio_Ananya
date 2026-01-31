@@ -7,6 +7,8 @@ import Timeline from './components/Timeline'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 
+import TechStack from './components/TechStack'
+
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [cursorVariant, setCursorVariant] = useState("default")
@@ -23,17 +25,19 @@ function App() {
     default: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
-      backgroundColor: "transparent",
-      border: "2px solid #06b6d4",
+      backgroundColor: "rgba(6, 182, 212, 0.1)",
+      border: "1px solid rgba(6, 182, 212, 0.3)",
+      boxShadow: "0 0 20px 2px rgba(6, 182, 212, 0.2)",
     },
     text: {
       height: 150,
       width: 150,
       x: mousePosition.x - 75,
       y: mousePosition.y - 75,
-      backgroundColor: "rgba(6, 182, 212, 0.1)",
+      backgroundColor: "rgba(6, 182, 212, 0.2)",
       border: "none",
       mixBlendMode: "screen",
+      boxShadow: "0 0 40px 5px rgba(6, 182, 212, 0.3)",
     }
   }
 
@@ -57,6 +61,7 @@ function App() {
 
       <Navbar />
       <Hero />
+      <TechStack />
       <About />
       <Timeline />
       <Projects />

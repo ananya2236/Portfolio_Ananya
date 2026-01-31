@@ -21,10 +21,13 @@ const skills = [
 
 const TechStack = () => {
   return (
-    <div className="py-10 overflow-hidden relative">
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-950 to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-950 to-transparent z-10" />
-        
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false }}
+      transition={{ duration: 0.8 }}
+      className="py-10 overflow-hidden relative"
+    >
         <div className="flex">
             <motion.div 
                 className="flex gap-12 px-12"
@@ -39,14 +42,14 @@ const TechStack = () => {
                 {[...skills, ...skills, ...skills, ...skills].map((skill, index) => (
                     <div key={index} className="flex flex-col items-center justify-center gap-2 group min-w-[80px]">
                         <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 group-hover:border-cyan-500/50 group-hover:bg-slate-800 transition-all duration-300">
-                             <skill.icon size={32} style={{ color: skill.color }} className="opacity-70 group-hover:opacity-100 transition-opacity" />
+                             <skill.icon size={32} style={{ color: skill.color }} className="opacity-100 transition-opacity" />
                         </div>
                         <span className="text-slate-500 text-sm group-hover:text-slate-300 transition-colors">{skill.name}</span>
                     </div>
                 ))}
             </motion.div>
         </div>
-    </div>
+    </motion.div>
   );
 };
 
