@@ -29,7 +29,7 @@ const About = () => {
                     I take ownership early, stay focused in demanding situations, and hold myself to clear standards. I plan, execute, reflect, and improve, prioritizing <span className="text-slate-200 font-medium">quality, accountability, and follow-through</span> over shortcuts. I aim to contribute meaningfully and raise the level of work wherever I’m involved.
                 </p>
                 
-                <div className="grid grid-cols-3 gap-4 pt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
                     <div className="p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 text-center hover:border-cyan-500/30 hover:bg-slate-900/80 transition-all duration-300 group">
                         <Server className="mx-auto mb-2 text-cyan-500 group-hover:scale-110 transition-transform" size={24} />
                         <span className="text-sm font-medium text-slate-300">Full-Stack Development</span>

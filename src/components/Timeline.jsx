@@ -25,56 +25,22 @@ const Timeline = () => {
   }, []);
 
   useEffect(() => {
-    if (!isMobile || !scrollRef.current) return;
-
-    const scrollContainer = scrollRef.current;
-    let animationFrameId;
-    let lastTime = 0;
-    const speed = 30; // pixels per second
-
-    const animateScroll = (time) => {
-      if (!lastTime) lastTime = time;
-      const deltaTime = (time - lastTime) / 1000;
-      lastTime = time;
-
-      if (scrollContainer) {
-         // Only scroll if not being touched (handled by checking scroll position manually or just letting it run and user overrides? 
-         // User override fights with programmatic scroll.
-         // A better way is to stop auto-scroll on interaction.)
-         // However, simple auto-scroll usually involves `scrollLeft += speed`.
-         // To support "Manual scroll should not disable auto-scroll permanently", we can use a simpler approach:
-         // Just use the marquee for desktop, and for mobile, standard scroll.
-         // BUT user said "Automatic scrolling/animation should still continue" on mobile.
-         // Let's try a gentle auto-scroll that pauses on hover/touch.
-      }
-      
-      // Actually, for mobile, a simple CSS animation might be better if we want smooth continuous flow, 
-      // but "manual horizontal scrolling" implies native touch interaction.
-      // Let's implement the auto-scroll via JS that pauses on interaction.
-    };
-
-    // animationFrameId = requestAnimationFrame(animateScroll);
-    // return () => cancelAnimationFrame(animationFrameId);
+    // Only run auto-scroll logic on desktop if we ever wanted it, 
+    // BUT the requirement is: "Allow users to manually scroll... Automatic animations... can remain".
+    // AND "Vertical Alignment... in a single column" for mobile.
+    // So for mobile, we are completely changing the structure to vertical.
+    // The previous auto-scroll logic was for the horizontal scroll view.
+    // We should disable that complex auto-scroll logic for mobile since we are going vertical.
     
-    // Simpler: Just rely on the user to scroll on mobile, or use a very slow interval.
-    // Given the complexity of mixing auto-scroll and touch-scroll perfectly without jank,
-    // and the request "Manual scroll should not disable auto-scroll permanently",
-    // I will implement a "Pulse" or "Hint" animation instead of full auto-scroll for mobile?
-    // No, "Automatic scrolling... should still continue".
+    if (isMobile) return; 
+    // Desktop logic remains for marquee... 
+    // Actually the marquee logic is handled by Framer Motion's `animate` prop in the JSX.
+    // So we don't need this complex useEffect for desktop unless we wanted to pause it on hover (which we do via whileHover).
+    // The previous complex logic was specifically for the "mobile horizontal scroll".
+    // Since we are switching mobile to VERTICAL stack, we don't need this effect at all for mobile.
+    // And for desktop, the marquee is pure CSS/Framer.
     
-    // Let's use a marquee for desktop, and for mobile, we use a standard scroll container.
-    // If we want auto-scroll on mobile, we can use a setInterval to increment scrollLeft.
-    
-    const autoScroll = setInterval(() => {
-        if (scrollContainer.matches(':hover')) return; // Pauses on touch/hold usually
-        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-            scrollContainer.scrollLeft = 0;
-        } else {
-            scrollContainer.scrollLeft += 1;
-        }
-    }, 30);
-    
-    return () => clearInterval(autoScroll);
+    // So we can remove this entire useEffect block that was handling the custom mobile auto-scroll.
   }, [isMobile]);
 
   return (
@@ -82,55 +48,46 @@ const Timeline = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
          <SectionHeading title="My Journey" />
 
-        <div className="relative mt-12 overflow-hidden">
-            {/* Horizontal Line */}
-            <div className="absolute top-[calc(100%-2rem)] left-0 w-full h-1 bg-slate-800 rounded-full" />
+        <div className="relative mt-12">
             
-            {/* Desktop Marquee */}
+            {/* Desktop View (Horizontal Marquee) */}
             {!isMobile && (
-            <motion.div 
-              className="flex gap-8 pb-12 pt-4 px-4"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ 
-                duration: 20, 
-                repeat: Infinity, 
-                ease: "linear",
-              }}
-              whileHover={{ animationPlayState: "paused" }}
-              style={{ width: "max-content" }}
-            >
-              {[...timelineEvents, ...timelineEvents].map((event, index) => (
-                <TimelineCard key={`desktop-${index}`} event={event} />
-              ))}
-            </motion.div>
+            <div className="overflow-hidden relative">
+                {/* Horizontal Line */}
+                <div className="absolute top-[calc(100%-2rem)] left-0 w-full h-1 bg-slate-800 rounded-full" />
+                
+                <motion.div 
+                className="flex gap-8 pb-12 pt-4 px-4"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ 
+                    duration: 20, 
+                    repeat: Infinity, 
+                    ease: "linear",
+                }}
+                whileHover={{ animationPlayState: "paused" }}
+                style={{ width: "max-content" }}
+                >
+                {[...timelineEvents, ...timelineEvents].map((event, index) => (
+                    <TimelineCard key={`desktop-${index}`} event={event} />
+                ))}
+                </motion.div>
+            </div>
             )}
 
-            {/* Mobile Scroll View */}
+            {/* Mobile View (Vertical Stack) */}
             {isMobile && (
-                <div 
-                    ref={scrollRef}
-                    className="flex gap-4 pb-12 pt-4 px-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
-                    style={{ 
-                        WebkitOverflowScrolling: 'touch',
-                        scrollbarWidth: 'none', 
-                        msOverflowStyle: 'none'
-                    }}
-                >
-                    {[...timelineEvents, ...timelineEvents].map((event, index) => (
-                        <div key={`mobile-${index}`} className="snap-center shrink-0">
+                <div className="relative pl-8 border-l-2 border-slate-800 space-y-12 ml-4">
+                    {timelineEvents.map((event, index) => (
+                        <div key={`mobile-${index}`} className="relative">
+                            {/* Dot on the line */}
+                            <div className="absolute -left-[41px] top-0 flex items-center justify-center w-6 h-6 bg-slate-950 border-2 border-cyan-500 rounded-full z-10">
+                                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                            </div>
+
                             <TimelineCard event={event} isMobile={true} />
                         </div>
                     ))}
-                    {/* Add a fade/arrow indicator if needed, but the loop suggests infinite. 
-                        For mobile scroll, infinite is hard without JS resetting scroll position. 
-                        The setInterval above handles the loop logic crudely. 
-                    */}
                 </div>
-            )}
-            
-            {/* Mobile Scroll Hint Overlay */}
-            {isMobile && (
-                <div className="absolute right-0 top-0 bottom-12 w-12 bg-gradient-to-l from-slate-950 to-transparent pointer-events-none" />
             )}
 
           </div>
@@ -142,18 +99,21 @@ const Timeline = () => {
 
 const TimelineCard = ({ event, isMobile = false }) => (
     <motion.div
-      className={`flex flex-col items-center group cursor-pointer ${isMobile ? 'min-w-[240px]' : 'min-w-[280px]'}`}
-      whileHover={{ scale: 1.02 }}
+      className={`flex flex-col group cursor-pointer ${isMobile ? 'w-full' : 'items-center min-w-[280px]'}`}
+      initial={isMobile ? { opacity: 0, x: -20 } : {}}
+      whileInView={isMobile ? { opacity: 1, x: 0 } : {}}
+      viewport={{ once: true, margin: "-50px" }}
+      whileHover={!isMobile ? { scale: 1.02 } : {}}
     >
       {/* Card */}
-      <div className={`w-full mb-8 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl 
+      <div className={`w-full bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl 
                       shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/30 transition-all duration-300 
                       relative overflow-hidden group-hover:bg-slate-900/80
-                      ${isMobile ? 'p-4' : 'p-5'}`}>
+                      ${isMobile ? 'p-4 mb-2' : 'p-5 mb-8'}`}>
          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
          
-         <span className="text-cyan-400 text-xs font-bold tracking-wider uppercase">{event.year}</span>
-         <h3 className="text-slate-100 font-bold text-base mt-2 group-hover:text-cyan-300 transition-colors">
+         <span className="text-cyan-400 text-xs font-bold tracking-wider uppercase block mb-1">{event.year}</span>
+         <h3 className="text-slate-100 font-bold text-base group-hover:text-cyan-300 transition-colors">
            {event.title}
          </h3>
          {event.description && (
@@ -163,12 +123,14 @@ const TimelineCard = ({ event, isMobile = false }) => (
          )}
       </div>
       
-      {/* Dot */}
-      <div className="relative z-10">
-         <div className="w-5 h-5 bg-cyan-500 rounded-full border-4 border-slate-950 shadow-[0_0_0_4px_rgba(6,182,212,0.2)] 
-                         group-hover:scale-125 group-hover:shadow-[0_0_0_6px_rgba(6,182,212,0.3)] transition-all duration-300" />
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-400/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
+      {/* Dot for Desktop (hidden on mobile as it's on the line) */}
+      {!isMobile && (
+        <div className="relative z-10">
+            <div className="w-5 h-5 bg-cyan-500 rounded-full border-4 border-slate-950 shadow-[0_0_0_4px_rgba(6,182,212,0.2)] 
+                            group-hover:scale-125 group-hover:shadow-[0_0_0_6px_rgba(6,182,212,0.3)] transition-all duration-300" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-400/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
+      )}
     </motion.div>
 );
 

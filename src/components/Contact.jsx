@@ -26,14 +26,14 @@ const Contact = () => {
         </SectionHeading>
 
         <div className="flex flex-col items-center justify-center gap-8 mb-20">
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
                  <motion.a 
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=singhananya2236@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-3 px-8 py-4 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:text-white hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
+                    className="flex items-center justify-center gap-3 px-8 py-4 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:text-white hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group w-full sm:w-auto"
                 >
                     <Mail size={20} className="text-cyan-500 group-hover:animate-bounce" />
                     <span className="font-medium">singhananya2236@gmail.com</span>
@@ -43,7 +43,7 @@ const Contact = () => {
                     onClick={handleCopyPhone}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-3 px-8 py-4 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:text-white hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 relative overflow-hidden group"
+                    className="flex items-center justify-center gap-3 px-8 py-4 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:text-white hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 relative overflow-hidden group w-full sm:w-auto"
                 >
                     {copied ? <Check size={20} className="text-green-500" /> : <Phone size={20} className="text-blue-500" />}
                     <span className="font-medium">+91 76950 72283</span>
