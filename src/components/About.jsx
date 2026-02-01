@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code, Server, Brain, GraduationCap, MapPin, Calendar } from 'lucide-react';
+import SectionHeading from './SectionHeading';
 
 const About = () => {
   return (
@@ -10,16 +11,7 @@ const About = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-        >
-            <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-100 mb-4">About Me</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 mx-auto rounded-full animate-gradient-x" />
-        </motion.div>
+        <SectionHeading title="About Me" />
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start mb-20">
             {/* Left Content - Wider */}
@@ -34,7 +26,7 @@ const About = () => {
                     I’m <span className="text-cyan-400 font-medium">Ananya Singh</span>, a third-year Computer Science student based in Bangalore. I work across <span className="text-cyan-400 font-medium">full-stack development, Data Structures and Algorithms, and AI/ML</span>, with a strong focus on problem-solving, system thinking, and disciplined execution. I build projects end to end while continuously strengthening my fundamentals with structure and consistency.
                 </p>
                 <p>
-                    I take ownership early, stay focused in demanding situations, and hold myself to clear standards. I plan, execute, reflect, and improve—prioritizing <span className="text-slate-200 font-medium">quality, accountability, and follow-through</span> over shortcuts. I aim to contribute meaningfully and raise the level of work wherever I’m involved.
+                    I take ownership early, stay focused in demanding situations, and hold myself to clear standards. I plan, execute, reflect, and improve, prioritizing <span className="text-slate-200 font-medium">quality, accountability, and follow-through</span> over shortcuts. I aim to contribute meaningfully and raise the level of work wherever I’m involved.
                 </p>
                 
                 <div className="grid grid-cols-3 gap-4 pt-6">
@@ -98,7 +90,6 @@ const About = () => {
                 </div>
             </motion.div>
         </div>
-
       </div>
     </section>
   );

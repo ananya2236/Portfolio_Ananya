@@ -1,6 +1,7 @@
 {
   "name": "ananya-singh-portfolio",
   "version": "1.0.0",
+  "type": "module",
   "description": "Portfolio website for Ananya Singh - Full Stack Developer & AI/ML Developer",
   "private": true,
   "dependencies": {

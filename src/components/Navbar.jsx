@@ -43,7 +43,6 @@ const Navbar = () => {
             className="text-2xl font-bold font-display tracking-tight text-slate-100 cursor-pointer"
             onClick={() => scrollToSection('#home')}
           >
-            AS<span className="text-cyan-400">.</span>
           </motion.div>
 
           {/* Desktop Menu */}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
+import SectionHeading from './SectionHeading';
 
 const projects = [
   {
@@ -43,15 +44,7 @@ const Projects = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl bg-cyan-900/5 blur-3xl -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            className="text-center mb-16"
-        >
-            <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-100 mb-4">Featured Projects</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 mx-auto rounded-full animate-gradient-x" />
-        </motion.div>
+        <SectionHeading title="Featured Projects" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {projects.map((project, index) => (

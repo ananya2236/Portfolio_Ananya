@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, Github, Linkedin, Code, Check, Copy } from 'lucide-react';
 import { useState } from 'react';
+import SectionHeading from './SectionHeading';
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -18,18 +19,11 @@ const Contact = () => {
       <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-cyan-900/10 to-transparent -z-10" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            className="text-center mb-16"
-        >
-            <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-100 mb-4">Get in Touch</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 mx-auto rounded-full mb-6 animate-gradient-x" />
+        <SectionHeading title="Get in Touch">
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">
                 I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
-        </motion.div>
+        </SectionHeading>
 
         <div className="flex flex-col items-center justify-center gap-8 mb-20">
             <div className="flex flex-wrap justify-center gap-6">

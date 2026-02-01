@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
 
 const timelineEvents = [
   { year: '2006', title: 'Born', description: 'The journey began' },
@@ -13,15 +14,7 @@ const Timeline = () => {
   return (
     <section className="py-20 bg-slate-950 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            className="text-center mb-16"
-        >
-            <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-100 mb-4">My Journey</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 mx-auto rounded-full animate-gradient-x" />
-        </motion.div>
+         <SectionHeading title="My Journey" />
 
         <div className="relative mt-12 overflow-hidden">
             {/* Horizontal Line */}
