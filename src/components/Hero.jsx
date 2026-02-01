@@ -33,7 +33,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-6"
+          className="space-y-6 text-center md:text-left"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ const Hero = () => {
              <h1 className="text-5xl md:text-7xl font-bold font-display text-slate-100 mb-4">
               Ananya Singh
             </h1>
-            <div className="h-12 md:h-16 overflow-hidden relative">
+            <div className="h-12 md:h-16 overflow-hidden relative w-full flex justify-center md:justify-start">
               <AnimatePresence mode="wait">
                 <motion.h3
                   key={roleIndex}
@@ -52,7 +52,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="text-2xl md:text-3xl text-slate-400 font-light absolute top-0 left-0"
+                  className="text-2xl md:text-3xl text-slate-400 font-light absolute top-0"
                 >
                   {roles[roleIndex]}
                 </motion.h3>
@@ -64,7 +64,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-slate-400 max-w-lg text-lg leading-relaxed"
+            className="text-slate-400 max-w-lg text-lg leading-relaxed mx-auto md:mx-0"
           >
             This space reflects clarity of thought, precision in execution, and a constant pursuit of growth.
             <br />
@@ -78,7 +78,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-wrap gap-4 pt-4"
+            className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start"
           >
             <a
   href="/resume.pdf"
@@ -108,7 +108,7 @@ const Hero = () => {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="mt-12 max-w-xs origin-center"
+            className="mt-12 max-w-xs origin-center mx-auto md:mx-0"
           >
             <div className="center-thick-line rounded-full" />
           </motion.div>
@@ -126,15 +126,15 @@ const Hero = () => {
             <motion.div 
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 border border-cyan-500/20 rounded-full w-[400px] h-[400px] m-auto border-dashed"
+                className="absolute inset-0 border border-cyan-500/20 rounded-full w-[280px] h-[280px] md:w-[400px] md:h-[400px] m-auto border-dashed opacity-50 md:opacity-100"
             />
              <motion.div 
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 border border-blue-500/20 rounded-full w-[450px] h-[450px] m-auto"
+                className="absolute inset-0 border border-blue-500/20 rounded-full w-[320px] h-[320px] md:w-[450px] md:h-[450px] m-auto opacity-50 md:opacity-100"
             />
 
-            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 shadow-[0_0_40px_rgba(6,182,212,0.3)] z-10 bg-slate-800 group hover:scale-105 transition-transform duration-500">
+            <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 shadow-[0_0_20px_rgba(6,182,212,0.2)] md:shadow-[0_0_40px_rgba(6,182,212,0.3)] z-10 bg-slate-800 group hover:scale-105 transition-transform duration-500">
                {/* Placeholder for user photo */}
                <img 
                  src="/profile.png"
@@ -148,12 +148,12 @@ const Hero = () => {
             <motion.div
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 right-10 w-16 h-16 bg-cyan-500/20 backdrop-blur-md rounded-2xl rotate-12 z-20"
+              className="absolute top-10 right-10 w-16 h-16 bg-cyan-500/20 backdrop-blur-md rounded-2xl rotate-12 z-20 hidden md:block"
             />
             <motion.div
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-10 left-10 w-12 h-12 bg-blue-500/20 backdrop-blur-md rounded-full z-20"
+              className="absolute bottom-10 left-10 w-12 h-12 bg-blue-500/20 backdrop-blur-md rounded-full z-20 hidden md:block"
             />
         </motion.div>
 
