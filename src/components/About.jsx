@@ -4,10 +4,10 @@ import SectionHeading from './SectionHeading';
 
 const About = () => {
   return (
-    <section id="about" className="py-20 relative bg-slate-900/30 overflow-hidden">
+    <section id="about" className="py-20 relative bg-black overflow-hidden">
       {/* Subtle animated background pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-950 to-slate-950" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-300/10 via-black to-black" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -20,7 +20,7 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.8 }}
-                className="lg:col-span-3 space-y-6 text-lg text-slate-400 leading-relaxed"
+                className="lg:col-span-3 space-y-6 text-lg text-slate-200 leading-relaxed"
             >
                 <p>
                     I’m <span className="text-cyan-400 font-medium">Ananya Singh</span>, a third-year Computer Science student based in Bangalore. I work across <span className="text-cyan-400 font-medium">full-stack development, Data Structures and Algorithms, and AI/ML</span>, with a strong focus on problem-solving, system thinking, and disciplined execution. I build projects end to end while continuously strengthening my fundamentals with structure and consistency.
@@ -30,16 +30,16 @@ const About = () => {
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
-                    <div className="p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 text-center hover:border-cyan-500/30 hover:bg-slate-900/80 transition-all duration-300 group">
-                        <Server className="mx-auto mb-2 text-cyan-500 group-hover:scale-110 transition-transform" size={24} />
+                    <div className="p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 text-center hover:border-amber-400/40 hover:bg-slate-900/80 transition-all duration-300 group">
+                        <Server className="mx-auto mb-2 text-amber-300 group-hover:scale-110 transition-transform" size={24} />
                         <span className="text-sm font-medium text-slate-300">Full-Stack Development</span>
                     </div>
-                    <div className="p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 text-center hover:border-blue-500/30 hover:bg-slate-900/80 transition-all duration-300 group">
-                        <Code className="mx-auto mb-2 text-blue-500 group-hover:scale-110 transition-transform" size={24} />
+                    <div className="p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 text-center hover:border-amber-400/40 hover:bg-slate-900/80 transition-all duration-300 group">
+                        <Code className="mx-auto mb-2 text-slate-300 group-hover:scale-110 transition-transform" size={24} />
                         <span className="text-sm font-medium text-slate-300">Data Structures & Algorithms</span>
                     </div>
-                    <div className="p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 text-center hover:border-purple-500/30 hover:bg-slate-900/80 transition-all duration-300 group">
-                        <Brain className="mx-auto mb-2 text-purple-500 group-hover:scale-110 transition-transform" size={24} />
+                    <div className="p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 text-center hover:border-amber-400/40 hover:bg-slate-900/80 transition-all duration-300 group">
+                        <Brain className="mx-auto mb-2 text-slate-300 group-hover:scale-110 transition-transform" size={24} />
                         <span className="text-sm font-medium text-slate-300">AI / ML</span>
                     </div>
                 </div>
@@ -53,20 +53,19 @@ const About = () => {
                 transition={{ duration: 0.8 }}
                 className="lg:col-span-2 relative h-full"
             >
-                <div className="relative bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 shadow-2xl h-full flex flex-col justify-center overflow-hidden group">
-                    {/* Decorative Gradients */}
-                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all duration-500" />
-                    <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-500" />
+                <div className="relative bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 transition-all duration-500 shadow-2xl h-full flex flex-col justify-center overflow-hidden group">
+                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-amber-300/10 rounded-full blur-3xl" />
+                    <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-slate-700/10 rounded-full blur-3xl" />
                     
                     <div className="flex items-center gap-3 mb-6 relative z-10">
-                        <div className="p-3 bg-slate-800/50 rounded-lg border border-slate-700 text-cyan-400">
+                        <div className="p-3 bg-slate-800/50 rounded-lg border border-slate-700 text-amber-300">
                             <GraduationCap size={28} />
                         </div>
                         <h3 className="text-2xl font-bold text-slate-100">Education</h3>
                     </div>
 
                     <div className="space-y-6 relative z-10">
-                        <div className="relative pl-6 border-l-2 border-slate-800 hover:border-cyan-500/50 transition-colors duration-300">
+                        <div className="relative pl-6 border-l-2 border-slate-800 transition-colors duration-300">
                             <h4 className="text-xl font-bold text-slate-200">B.Tech Computer Science</h4>
                             <p className="text-cyan-400 font-medium mt-1">Jain University</p>
                             
@@ -81,9 +80,9 @@ const About = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full border border-cyan-500/20 shadow-sm">
-                                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                                <p className="text-cyan-400 text-sm font-bold tracking-wide">CGPA: 8.9</p>
+                            <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 bg-amber-300/10 rounded-full border border-amber-300/30 shadow-sm">
+                                <span className="w-2 h-2 rounded-full bg-amber-300" />
+                                <p className="text-amber-300 text-sm font-bold tracking-wide">CGPA: 8.9</p>
                             </div>
                         </div>
                     </div>

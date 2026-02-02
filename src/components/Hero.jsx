@@ -22,9 +22,8 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Background Elements */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-24 right-0 w-80 h-80 bg-amber-300/10 rounded-full blur-2xl -z-10" />
+      <div className="absolute bottom-24 left-0 w-80 h-80 bg-slate-700/10 rounded-full blur-2xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
@@ -40,7 +39,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-             <h2 className="text-cyan-400 font-medium tracking-wider mb-2">HELLO, I'M</h2>
+             <h2 className="text-amber-300 font-medium tracking-wider mb-2">HELLO, I'M</h2>
              <h1 className="text-5xl md:text-7xl font-bold font-display text-slate-100 mb-4">
               Ananya Singh
             </h1>
@@ -52,7 +51,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="text-2xl md:text-3xl text-slate-400 font-light absolute top-0"
+                  className="text-2xl md:text-3xl text-slate-300 font-light absolute top-0"
                 >
                   {roles[roleIndex]}
                 </motion.h3>
@@ -81,18 +80,16 @@ const Hero = () => {
             className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start"
           >
             <a
-  href="/resume.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  download
-  className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-medium
-             hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300
-             transform hover:-translate-y-1 flex items-center gap-2 group"
->
-  <FileText size={20} />
-  <span>Resume</span>
-  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-</a>
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="px-8 py-3 rounded-full text-slate-900 font-medium bg-amber-300 hover:bg-amber-400 transition-colors duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group"
+            >
+              <FileText size={20} />
+              <span>Resume</span>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </a>
 
             <button 
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
@@ -134,42 +131,27 @@ const Hero = () => {
                 className="absolute inset-0 border border-blue-500/20 rounded-full w-[320px] h-[320px] md:w-[450px] md:h-[450px] m-auto opacity-50 md:opacity-100"
             />
 
-            <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 shadow-[0_0_20px_rgba(6,182,212,0.2)] md:shadow-[0_0_40px_rgba(6,182,212,0.3)] z-10 bg-slate-800 group hover:scale-105 transition-transform duration-500">
+            <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 z-10 bg-slate-800 group hover:scale-[1.02] transition-transform duration-500">
                {/* Placeholder for user photo */}
                <img 
                  src="/profile.png"
                  alt="Ananya Singh" 
                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent mix-blend-overlay group-hover:from-slate-900/40 transition-all duration-500" />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent mix-blend-overlay group-hover:from-black/40 transition-all duration-500" />
             </div>
             
-            {/* Floating Elements */}
-            <motion.div
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 right-10 w-16 h-16 bg-cyan-500/20 backdrop-blur-md rounded-2xl rotate-12 z-20 hidden md:block"
-            />
-            <motion.div
-              animate={{ y: [10, -10, 10] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-10 left-10 w-12 h-12 bg-blue-500/20 backdrop-blur-md rounded-full z-20 hidden md:block"
-            />
+            <div className="absolute top-10 right-10 w-14 h-14 bg-amber-300/10 rounded-2xl rotate-12 z-20 hidden md:block" />
+            <div className="absolute bottom-10 left-10 w-10 h-10 bg-slate-600/10 rounded-full z-20 hidden md:block" />
         </motion.div>
 
       </div>
       
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ delay: 2, duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500"
-      >
-        <div className="w-6 h-10 border-2 border-slate-600 rounded-full flex justify-center p-2">
-            <div className="w-1 h-2 bg-cyan-500 rounded-full" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500">
+        <div className="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center p-2">
+            <div className="w-1 h-2 bg-amber-300 rounded-full" />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

@@ -9,7 +9,7 @@ import Cursor from './components/Cursor'
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-slate-950 text-slate-200 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="relative min-h-screen bg-black text-slate-100 overflow-x-hidden selection:bg-amber-300/25 selection:text-slate-100">
       <Cursor />
       <Navbar />
       <Hero />

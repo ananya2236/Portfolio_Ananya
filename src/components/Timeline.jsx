@@ -54,7 +54,7 @@ const Timeline = () => {
             {!isMobile && (
             <div className="overflow-hidden relative">
                 {/* Horizontal Line */}
-                <div className="absolute top-[calc(100%-2rem)] left-0 w-full h-1 bg-slate-800 rounded-full" />
+                <div className="absolute top-[calc(100%-2rem)] left-0 w-full h-[1px] bg-slate-700" />
                 
                 <motion.div 
                 className="flex gap-8 pb-12 pt-4 px-4"
@@ -80,8 +80,8 @@ const Timeline = () => {
                     {timelineEvents.map((event, index) => (
                         <div key={`mobile-${index}`} className="relative">
                             {/* Dot on the line */}
-                            <div className="absolute -left-[41px] top-0 flex items-center justify-center w-6 h-6 bg-slate-950 border-2 border-cyan-500 rounded-full z-10">
-                                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                            <div className="absolute -left-[41px] top-0 flex items-center justify-center w-6 h-6 bg-black border-2 border-amber-300 rounded-full z-10">
+                                <div className="w-2 h-2 bg-amber-300 rounded-full" />
                             </div>
 
                             <TimelineCard event={event} isMobile={true} />
@@ -126,9 +126,8 @@ const TimelineCard = ({ event, isMobile = false }) => (
       {/* Dot for Desktop (hidden on mobile as it's on the line) */}
       {!isMobile && (
         <div className="relative z-10">
-            <div className="w-5 h-5 bg-cyan-500 rounded-full border-4 border-slate-950 shadow-[0_0_0_4px_rgba(6,182,212,0.2)] 
-                            group-hover:scale-125 group-hover:shadow-[0_0_0_6px_rgba(6,182,212,0.3)] transition-all duration-300" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-400/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="w-5 h-5 bg-amber-300 rounded-full border-4 border-black transition-all duration-300" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-amber-300/10 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
       )}
     </motion.div>
