@@ -83,7 +83,6 @@ const Hero = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              download
               className="px-8 py-3 rounded-full text-slate-900 font-medium bg-amber-300 hover:bg-amber-400 transition-colors duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group"
             >
               <FileText size={20} />
@@ -131,12 +130,12 @@ const Hero = () => {
                 className="absolute inset-0 border border-blue-500/20 rounded-full w-[320px] h-[320px] md:w-[450px] md:h-[450px] m-auto opacity-50 md:opacity-100"
             />
 
-            <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 z-10 bg-slate-800 group hover:scale-[1.02] transition-transform duration-500">
+            <div id="hero-photo" className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 z-10 bg-slate-800 group hover:scale-[1.02] transition-transform duration-500">
                {/* Placeholder for user photo */}
                <img 
-                 src="/profile.png"
+                 src="/profile.jpeg"
                  alt="Ananya Singh" 
-                 className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                 className="w-full h-full object-cover border-6 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                />
                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent mix-blend-overlay group-hover:from-black/40 transition-all duration-500" />
             </div>
@@ -147,7 +146,13 @@ const Hero = () => {
 
       </div>
       
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500">
+      <div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500 cursor-pointer"
+        onClick={() => {
+          const el = document.getElementById('about');
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }}
+      >
         <div className="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center p-2">
             <div className="w-1 h-2 bg-amber-300 rounded-full" />
         </div>

@@ -9,6 +9,19 @@ const Cursor = () => {
     if (!cursor) return;
 
     const handleMouseMove = (e) => {
+      const heroEl = document.getElementById('hero-photo');
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        const insideHero =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+        if (insideHero) {
+          cursor.style.opacity = '0';
+          return;
+        }
+      }
       // Direct DOM update for high performance
       // Use translate3d for GPU acceleration
       cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
@@ -37,7 +50,7 @@ const Cursor = () => {
     >
       {/* Soft Blush / Aura Effect */}
       {/* Increased blur and reduced opacity for 'gentle light smear' feel */}
-      <div className="w-96 h-96 bg-cyan-400/10 rounded-full blur-[100px]" /> 
+      <div className="w-96 h-96 bg-amber-300/10 rounded-full blur-[100px]" /> 
     </div>
   );
 };
