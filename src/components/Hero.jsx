@@ -134,7 +134,7 @@ const Hero = () => {
             <div id="hero-photo" className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800 z-10 bg-slate-800 group hover:scale-[1.02] transition-transform duration-500">
                {/* Placeholder for user photo */}
                <img 
-                 src="/profile.jpeg"
+                 src="/profile.webp"
                  alt="Ananya Singh" 
                  className="w-full h-full object-cover border-6 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                />
