@@ -53,3 +53,40 @@
     transparent 100%
   );
 }
+
+@layer utilities {
+  .bg-yellow-flow {
+    background: linear-gradient(120deg, rgba(0,0,0,0.85), rgba(204,255,0,0.12) 30%, rgba(204,255,0,0.08) 60%, rgba(0,0,0,0.85));
+    background-size: 200% 200%;
+    will-change: background-position, opacity;
+  }
+  .animate-yellow-shift { animation: yellowShift 26s ease-in-out infinite; }
+
+  .bg-glow-yellow-1 {
+    background: radial-gradient(closest-side, rgba(204,255,0,0.25), rgba(204,255,0,0.10) 40%, transparent 75%);
+    will-change: transform, opacity;
+  }
+  .bg-glow-yellow-2 {
+    background: radial-gradient(closest-side, rgba(204,255,0,0.18), rgba(204,255,0,0.08) 40%, transparent 75%);
+    will-change: transform, opacity;
+  }
+  .animate-float-slow { animation: floatSlow 24s ease-in-out infinite alternate; }
+  .animate-float-slower { animation: floatSlower 30s ease-in-out infinite alternate; }
+}
+
+@keyframes yellowShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 48%; }
+  100% { background-position: 0% 52%; }
+}
+
+@keyframes floatSlow {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-18px, 10px, 0) scale(1.02); }
+  100% { transform: translate3d(10px, -8px, 0) scale(0.995); }
+}
+@keyframes floatSlower {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(14px, -12px, 0) scale(1.01); }
+  100% { transform: translate3d(-8px, 10px, 0) scale(0.995); }
+}
